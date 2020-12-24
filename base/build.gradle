@@ -1,0 +1,98 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply from: './gradleBintrayConfigurationsUpload.gradle'
+
+
+/*publish {
+    userOrg = 'shineiot'
+    groupId = 'com.shineiot'
+    artifactId = 'base'
+    publishVersion = '0.0.1'
+    desc = 'Oh hi, this is a nice description for a project, right?'
+    website = 'https://shineiot.cn'
+}*/
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    api "androidx.multidex:multidex:$multidex"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "androidx.core:core-ktx:$core_ktx"
+    api "androidx.appcompat:appcompat:$appcompat"
+    api "androidx.recyclerview:recyclerview:$recyclerView"
+    api "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout"
+    api "androidx.constraintlayout:constraintlayout:$constraint_layout"
+    api "com.google.android.material:material:$material"
+    api "com.afollestad.material-dialogs:core:$material_dialogs"
+    api "com.afollestad.material-dialogs:lifecycle:$material_lifecycle"
+
+    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
+
+    api "com.squareup.retrofit2:retrofit:$retrofit"
+    api "com.squareup.retrofit2:converter-gson:$converter_gson"
+    api "com.squareup.okhttp3:okhttp:$okhttp"
+    api "com.squareup.okhttp3:logging-interceptor:$logging_interceptor"
+
+    api "org.greenrobot:eventbus:$eventbus"
+    kapt "org.greenrobot:eventbus-annotation-processor:$eventbus"
+
+    api "com.github.bumptech.glide:glide:$glide"
+    kapt "com.github.bumptech.glide:compiler:$glide"
+    
+    api "com.github.maning0303:MNProgressHUD:$MNProgressHUD"
+
+    api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$BaseRecyclerViewAdapterHelper"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_android"
+    api "com.just.agentweb:agentweb:$agentweb"
+    api "me.jessyan:autosize:$autosize"
+    api "com.permissionx.guolindev:permissionx:$permissionx"
+    api "cn.jiguang.sdk:jpush:$JPush"
+    api "cn.jiguang.sdk:jcore:$JCore"
+    debugApi "com.squareup.leakcanary:leakcanary-android:$leakcanary"
+    api "com.tencent.bugly:crashreport:$crashreport"
+    api "com.zhihu.android:matisse:$matisse"
+    api "com.github.chrisbanes:PhotoView:$PhotoView"
+    api 'com.tencent.tbs.tbssdk:sdk:43903'
+    api 'cn.yipianfengye.android:zxing-library:2.2'
+    debugApi ("com.didichuxing.doraemonkit:doraemonkit:$doraemonkit"){
+        exclude group: 'com.google.zxing'
+    }
+    releaseApi ("com.didichuxing.doraemonkit:doraemonkit-no-op:$doraemonkit"){
+        exclude group: 'com.google.zxing'
+    }
+    // push kit
+    //api "com.huawei.hms:push:$HPush"
+
+    //gradlew clean build bintrayUpload -PbintrayUser=bjwangs -PbintrayKey=27987aae88906018eacce2cdc69800931b0d3d9c -PdryRun=false
+}

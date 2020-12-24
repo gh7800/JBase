@@ -1,0 +1,43 @@
+ext{
+    //kotlin_version = '1.4.10'
+    kotlinx_coroutines_android = '1.3.5'
+
+    compileSdkVersion = 29
+    minSdkVersion = 21
+    targetSdkVersion = 29
+    supportVersion = '29.0.3'
+
+    constraint_layout = '2.0.2'
+    lifecycle = '1.1.1'
+    appcompat = '1.2.0'
+    core_ktx = '1.3.2'
+    material_dialogs = "3.3.0"
+    material_lifecycle = "3.2.1"
+    multidex = "2.0.1"
+
+    retrofit = '2.7.1'
+    rxjava = '2.2.7'
+    rxandroid = '2.1.1'
+    converter_gson = '2.7.1'
+    adapter_rxjava = '2.4.0'
+    okhttp = '4.3.1'
+    logging_interceptor = '3.12.1'
+
+    material = "1.2.1"
+    recyclerView = "1.1.0"
+    swiperefreshlayout = "1.1.0"
+    eventbus = '3.2.0'
+    glide = '4.9.0'
+    MNProgressHUD = 'V2.0.0X'
+    BaseRecyclerViewAdapterHelper = '3.0.3'
+    agentweb = '4.1.3'
+    autosize = '1.2.1'
+    permissionx = "1.4.0"
+    JPush = '3.7.0'
+    JCore = '2.4.2'
+    leakcanary = "2.4"
+    crashreport = "3.2.33"
+    matisse = "0.5.3-beta3"
+    PhotoView = "2.0.0"
+    HPush = "5.0.2.300"
+}
