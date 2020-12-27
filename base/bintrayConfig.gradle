@@ -3,9 +3,10 @@ apply plugin: 'com.jfrog.bintray'
 
 // 定义参数
 def gitUrl = 'https://github.com/gh7800/JBase.git'   // Git仓库的url
+def siteUrl = 'https://github.com/gh7800/JBase'      //项目主页
 def groupIdDefined = "com.shineiot"
 def artifactIdDefined = "Base"
-def versionDefined = "1.0.1"
+def versionDefined = "1.0.5"
 
 // 待发布项目的groupId和version。android-maven-gradle-plugin插件需要这么配置。
 group = "$groupIdDefined"
@@ -15,10 +16,8 @@ version = "$versionDefined"
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 bintray {
-    user = 'bjwangs' // local.properties里设置
-    //user = properties.getProperty("bintray.user") // local.properties里设置
-    key = '27987aae88906018eacce2cdc69800931b0d3d9c' // local.properties里设置
-    //key = properties.getProperty("bintray.apikey") // local.properties里设置
+    user = properties.getProperty("bintray.user")  // local.properties里设置
+    key = properties.getProperty("bintray.apikey") // local.properties里设置
     configurations = ['archives']
     publish = true
     pkg {
@@ -47,30 +46,45 @@ install {
                     url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                 }
             }
+            //填写开发者基本信息，复制我的，这里需要修改。
+            developers {
+                developer {
+                    id 'ws' // 开发者的id,随便写
+                    name 'wangShuai' // 开发者名字,,随便写
+                    email 'glwangshuai@gmail.com' // 开发者邮箱。
+                }
+            }
+
+            // SCM，直接复制，这里不需要修改。
+            scm {
+                connection gitUrl // Git仓库地址。
+                developerConnection gitUrl // Git仓库地址。
+                url siteUrl // 项目主页。
+            }
         }
     }
 }
 
 // 生成sourceJar和javaDocJar
-//task sourcesJar(type: Jar) {
-//    from android.sourceSets.main.java.srcDirs
-//    classifier = 'sources'
-//}
-//
-//task javadoc(type: Javadoc) {
-//    failOnError false
-//    source = android.sourceSets.main.java.sourceFiles
-//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-//    classpath += configurations.compile
-//}
-//task javadocJar(type: Jar, dependsOn: javadoc) {
-//    classifier = 'javadoc'
-//    from javadoc.destinationDir
-//}
-//
-//artifacts {
-//    archives sourcesJar
-//    archives javadocJar
-//}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
 
 // 执行 ./gradlew clean bintrayUpload

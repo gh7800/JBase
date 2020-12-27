@@ -1,11 +1,14 @@
 package cn.shineiot.basekotlin
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import cn.shineiot.base.mvp.BaseActivity
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity() {
+    override fun initView() {
+
     }
+
+    override fun layoutId(): Int {
+        return R.layout.activity_main
+    }
+
 }

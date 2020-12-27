@@ -22,6 +22,7 @@ ext{
     adapter_rxjava = '2.4.0'
     okhttp = '4.3.1'
     logging_interceptor = '3.12.1'
+    lifecycle_version = "2.2.0"
 
     material = "1.2.1"
     recyclerView = "1.1.0"

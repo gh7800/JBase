@@ -2,17 +2,7 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply from: './gradleBintrayConfigurationsUpload.gradle'
-
-
-/*publish {
-    userOrg = 'shineiot'
-    groupId = 'com.shineiot'
-    artifactId = 'base'
-    publishVersion = '0.0.1'
-    desc = 'Oh hi, this is a nice description for a project, right?'
-    website = 'https://shineiot.cn'
-}*/
+apply from: './bintrayConfig.gradle'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -39,11 +29,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
-    //api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     api "androidx.multidex:multidex:$multidex"
     api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -56,8 +44,8 @@ dependencies {
     api "com.afollestad.material-dialogs:core:$material_dialogs"
     api "com.afollestad.material-dialogs:lifecycle:$material_lifecycle"
 
-    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     api "com.squareup.retrofit2:retrofit:$retrofit"
     api "com.squareup.retrofit2:converter-gson:$converter_gson"
@@ -70,19 +58,21 @@ dependencies {
     api "com.github.bumptech.glide:glide:$glide"
     kapt "com.github.bumptech.glide:compiler:$glide"
     
-    api "com.github.maning0303:MNProgressHUD:$MNProgressHUD"
 
     api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$BaseRecyclerViewAdapterHelper"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_android"
-    api "com.just.agentweb:agentweb:$agentweb"
     api "me.jessyan:autosize:$autosize"
     api "com.permissionx.guolindev:permissionx:$permissionx"
-    api "cn.jiguang.sdk:jpush:$JPush"
-    api "cn.jiguang.sdk:jcore:$JCore"
-    debugApi "com.squareup.leakcanary:leakcanary-android:$leakcanary"
     api "com.tencent.bugly:crashreport:$crashreport"
-    api "com.zhihu.android:matisse:$matisse"
+    debugApi "com.squareup.leakcanary:leakcanary-android:$leakcanary"
+
+    api "com.github.maning0303:MNProgressHUD:$MNProgressHUD"
     api "com.github.chrisbanes:PhotoView:$PhotoView"
+
+    //api "cn.jiguang.sdk:jpush:$JPush"
+    //api "cn.jiguang.sdk:jcore:$JCore"
+    api "com.just.agentweb:agentweb:$agentweb"
+    api "com.zhihu.android:matisse:$matisse"
     api 'com.tencent.tbs.tbssdk:sdk:43903'
     api 'cn.yipianfengye.android:zxing-library:2.2'
     debugApi ("com.didichuxing.doraemonkit:doraemonkit:$doraemonkit"){
@@ -94,5 +84,4 @@ dependencies {
     // push kit
     //api "com.huawei.hms:push:$HPush"
 
-    //gradlew clean build bintrayUpload -PbintrayUser=bjwangs -PbintrayKey=27987aae88906018eacce2cdc69800931b0d3d9c -PdryRun=false
 }
