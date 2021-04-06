@@ -4,9 +4,10 @@ apply plugin: 'com.jfrog.bintray'
 // 定义参数
 def gitUrl = 'https://github.com/gh7800/JBase.git'   // Git仓库的url
 def siteUrl = 'https://github.com/gh7800/JBase'      //项目主页
+
 def groupIdDefined = "com.shineiot"
-def artifactIdDefined = "Base"
-def versionDefined = "1.0.5"
+def artifactIdDefined = "baseKt"
+def versionDefined = "1.0.8"                         //implementation com.shineiot.Base:1.0.7
 
 // 待发布项目的groupId和version。android-maven-gradle-plugin插件需要这么配置。
 group = "$groupIdDefined"
@@ -22,7 +23,7 @@ bintray {
     publish = true
     pkg {
         repo = "Base"  // 必填。bintray平台仓库名，必须已经创建过。
-        name = "base"  // 必填。仓库里包package的名称，没有的话会自动创建。
+        name = "$artifactIdDefined"  // 必填。仓库里包package的名称，没有的话会自动创建。
         licenses = ["Apache-2.0"] // 首次创建package则必须，否则选填。
         vcsUrl = gitUrl // 首次创建package则必须，否则选填。
         version {
@@ -87,4 +88,4 @@ artifacts {
     archives javadocJar
 }
 
-// 执行 ./gradlew clean bintrayUpload
+// 执行 gradlew clean bintrayUpload
