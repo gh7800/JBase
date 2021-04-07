@@ -2,12 +2,12 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply from: './bintrayConfig.gradle'
+//apply from: './bintrayConfig.gradle'
 
 ext {
-    PUBLISH_GROUP_ID = "base"        //项目包名
-    PUBLISH_ARTIFACT_ID = 'base'            //项目名
-    PUBLISH_VERSION = '1.0.9'                    //版本号
+    PUBLISH_GROUP_ID = 'com.github.gh7800'       //项目包名
+    PUBLISH_ARTIFACT_ID = project.getName()            //项目名
+    PUBLISH_VERSION = project.getVersion()                    //版本号
 }
 apply from: "./publish-mavencentral.gradle"
 
