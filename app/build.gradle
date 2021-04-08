@@ -46,4 +46,5 @@ dependencies {
 //    implementation 'com.shineiot:baseKt:1.0.8'
     implementation project(':base')
 
+//    implementation 'com.github.gh7800:JBase:1.0'
 }

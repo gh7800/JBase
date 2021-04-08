@@ -65,7 +65,7 @@ publishing {
                     connection = 'scm:git:github.com/gh7800/JBase.git'
                     developerConnection = 'scm:git:ssh://github.com/gh7800/JBase.git'
                     //分支地址：
-                    url = 'https://github.com/gh7800/JBase/main'
+                    url = 'https://github.com/gh7800/JBase/tree/main'
                 }
                 // A slightly hacky fix so that your POM will include any transitive dependencies
                 // that your library builds upon
